@@ -876,7 +876,7 @@ section { scroll-margin-top: var(--nav-h); }
 </nav>
 
 <div class="hero">
-  <video class="hero-video" autoplay muted loop playsinline preload="metadata">
+  <video class="hero-video" autoplay muted loop playsinline webkit-playsinline preload="metadata">
     <source src="img/homevid.mp4" type="video/mp4">
   </video>
   <div class="hero-overlay"></div>
@@ -951,7 +951,7 @@ section { scroll-margin-top: var(--nav-h); }
       <div class="prog-card" style="background:var(--surface2); border-radius:8px; overflow:hidden; padding:0; text-align:center;">
         <div class="prog-title" style="text-align:center;font-family:'Oswald',sans-serif;font-weight:700;font-size:14px;letter-spacing:.12em;text-transform:uppercase;padding:8px 0;">Muscle Up</div>
         <div class="prog-img-wrap">
-          <video autoplay muted loop playsinline preload="metadata" aria-label="Muscle Up">
+          <video autoplay muted loop playsinline webkit-playsinline preload="metadata" aria-label="Muscle Up">
             <source src="img/giphy.mp4" type="video/mp4">
           </video>
         </div>
@@ -959,7 +959,7 @@ section { scroll-margin-top: var(--nav-h); }
       <div class="prog-card" style="background:var(--surface2); border-radius:8px; overflow:hidden; padding:0; text-align:center;">
         <div class="prog-title" style="text-align:center;font-family:'Oswald',sans-serif;font-weight:700;font-size:14px;letter-spacing:.12em;text-transform:uppercase;padding:8px 0;">Handstand Push Up</div>
         <div class="prog-img-wrap">
-          <video autoplay muted loop playsinline preload="metadata" aria-label="Handstand Push Up">
+          <video autoplay muted loop playsinline webkit-playsinline preload="metadata" aria-label="Handstand Push Up">
             <source src="img/hspu profondi.mp4" type="video/mp4">
           </video>
         </div>
@@ -1215,6 +1215,31 @@ section { scroll-margin-top: var(--nav-h); }
       const s = d.querySelector('.faq-toggle');
       if (s) s.textContent = d.open ? '−' : '+';
     });
+  });
+  const autoplayVideos = document.querySelectorAll('video[autoplay]');
+  const tryAutoplayVideo = (video) => {
+    if (!video) return;
+    video.muted = true;
+    video.defaultMuted = true;
+    video.setAttribute('muted', '');
+    video.setAttribute('playsinline', '');
+    video.setAttribute('webkit-playsinline', '');
+    const playPromise = video.play();
+    if (playPromise && typeof playPromise.catch === 'function') {
+      playPromise.catch(() => {});
+    }
+  };
+  const tryAutoplayAllVideos = () => autoplayVideos.forEach(tryAutoplayVideo);
+  autoplayVideos.forEach(video => {
+    video.addEventListener('loadedmetadata', () => tryAutoplayVideo(video), { passive: true });
+    video.addEventListener('canplay', () => tryAutoplayVideo(video), { passive: true });
+  });
+  window.addEventListener('load', tryAutoplayAllVideos, { passive: true });
+  document.addEventListener('visibilitychange', () => {
+    if (!document.hidden) tryAutoplayAllVideos();
+  });
+  ['touchstart', 'click', 'scroll'].forEach(eventName => {
+    window.addEventListener(eventName, tryAutoplayAllVideos, { passive: true, once: true });
   });
   const contactForm = document.getElementById('contactForm');
   const formNotice = document.getElementById('formNotice');
