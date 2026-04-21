@@ -218,6 +218,23 @@ section { scroll-margin-top: var(--nav-h); }
   width: 100%;
 }
 
+.prog-img-wrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background: #101010;
+}
+
+.prog-img-wrap img,
+.prog-img-wrap video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
 @media (min-width: 1024px) { .program-grid { grid-template-columns: repeat(4, 1fr); } }
 @media (min-width: 769px) and (max-width: 1023px) { .program-grid { grid-template-columns: repeat(3, 1fr); gap: 22px; } }
 @media (max-width: 767px) {
@@ -859,7 +876,7 @@ section { scroll-margin-top: var(--nav-h); }
 </nav>
 
 <div class="hero">
-  <video class="hero-video" autoplay muted loop playsinline>
+  <video class="hero-video" autoplay muted loop playsinline preload="metadata">
     <source src="img/homevid.mp4" type="video/mp4">
   </video>
   <div class="hero-overlay"></div>
@@ -909,32 +926,32 @@ section { scroll-margin-top: var(--nav-h); }
     <div class="program-grid">
       <div class="prog-card" style="background:var(--surface2); border-radius:8px; overflow:hidden; padding:0; text-align:center;">
         <div class="prog-title" style="text-align:center;font-family:'Oswald',sans-serif;font-weight:700;font-size:14px;letter-spacing:.12em;text-transform:uppercase;padding:8px 0;">Verticale</div>
-        <div class="prog-img-wrap"><img src="img/Untitled design (2) (1).png" alt="Verticale" width="4314" height="3353" style="width:100%;height:180px;object-fit:cover;"></div>
+        <div class="prog-img-wrap"><img src="img/Untitled design (2) (1).png" alt="Verticale" width="4314" height="3353"></div>
       </div>
       <div class="prog-card" style="background:var(--surface2); border-radius:8px; overflow:hidden; padding:0; text-align:center;">
         <div class="prog-title" style="text-align:center;font-family:'Oswald',sans-serif;font-weight:700;font-size:14px;letter-spacing:.12em;text-transform:uppercase;padding:8px 0;">Planche</div>
-        <div class="prog-img-wrap"><img src="img/Shotcut_00_00_05_939.png" alt="Planche" style="width:100%;height:180px;object-fit:cover;"></div>
+        <div class="prog-img-wrap"><img src="img/Shotcut_00_00_05_939.png" alt="Planche"></div>
       </div>
       <div class="prog-card" style="background:var(--surface2); border-radius:8px; overflow:hidden; padding:0; text-align:center;">
         <div class="prog-title" style="text-align:center;font-family:'Oswald',sans-serif;font-weight:700;font-size:14px;letter-spacing:.12em;text-transform:uppercase;padding:8px 0;">Front Lever</div>
-        <div class="prog-img-wrap"><img src="img/DJI_0674 (1).png" alt="Front Lever" style="width:100%;height:180px;object-fit:cover;"></div>
+        <div class="prog-img-wrap"><img src="img/DJI_0674 (1).png" alt="Front Lever"></div>
       </div>
       <div class="prog-card" style="background:var(--surface2); border-radius:8px; overflow:hidden; padding:0; text-align:center;">
         <div class="prog-title" style="text-align:center;font-family:'Oswald',sans-serif;font-weight:700;font-size:14px;letter-spacing:.12em;text-transform:uppercase;padding:8px 0;">Back Lever</div>
-        <div class="prog-img-wrap"><img src="img/Copia_di_Senza_titolo-4_copia_3_5ed8cc416db5a.png" alt="Back Lever" style="width:100%;height:180px;object-fit:cover;"></div>
+        <div class="prog-img-wrap"><img src="img/Copia_di_Senza_titolo-4_copia_3_5ed8cc416db5a.png" alt="Back Lever"></div>
       </div>
       <div class="prog-card" style="background:var(--surface2); border-radius:8px; overflow:hidden; padding:0; text-align:center;">
         <div class="prog-title" style="text-align:center;font-family:'Oswald',sans-serif;font-weight:700;font-size:14px;letter-spacing:.12em;text-transform:uppercase;padding:8px 0;">Bandiera</div>
-        <div class="prog-img-wrap"><img src="img/DJI_0696 (1).png" alt="Bandiera" style="width:100%;height:180px;object-fit:cover;"></div>
+        <div class="prog-img-wrap"><img src="img/DJI_0696 (1).png" alt="Bandiera"></div>
       </div>
       <div class="prog-card" style="background:var(--surface2); border-radius:8px; overflow:hidden; padding:0; text-align:center;">
         <div class="prog-title" style="text-align:center;font-family:'Oswald',sans-serif;font-weight:700;font-size:14px;letter-spacing:.12em;text-transform:uppercase;padding:8px 0;">V-Sit</div>
-        <div class="prog-img-wrap"><img src="img/Immagine 2021-09-03 165422.png" alt="V-Sit" style="width:100%;height:180px;object-fit:cover;"></div>
+        <div class="prog-img-wrap"><img src="img/Immagine 2021-09-03 165422.png" alt="V-Sit"></div>
       </div>
       <div class="prog-card" style="background:var(--surface2); border-radius:8px; overflow:hidden; padding:0; text-align:center;">
         <div class="prog-title" style="text-align:center;font-family:'Oswald',sans-serif;font-weight:700;font-size:14px;letter-spacing:.12em;text-transform:uppercase;padding:8px 0;">Muscle Up</div>
         <div class="prog-img-wrap">
-          <video autoplay muted loop playsinline preload="metadata" aria-label="Muscle Up" style="width:100%;height:180px;object-fit:cover;display:block;">
+          <video autoplay muted loop playsinline preload="metadata" aria-label="Muscle Up">
             <source src="img/giphy.mp4" type="video/mp4">
           </video>
         </div>
@@ -942,7 +959,7 @@ section { scroll-margin-top: var(--nav-h); }
       <div class="prog-card" style="background:var(--surface2); border-radius:8px; overflow:hidden; padding:0; text-align:center;">
         <div class="prog-title" style="text-align:center;font-family:'Oswald',sans-serif;font-weight:700;font-size:14px;letter-spacing:.12em;text-transform:uppercase;padding:8px 0;">Handstand Push Up</div>
         <div class="prog-img-wrap">
-          <video autoplay muted loop playsinline preload="metadata" aria-label="Handstand Push Up" style="width:100%;height:180px;object-fit:cover;display:block;">
+          <video autoplay muted loop playsinline preload="metadata" aria-label="Handstand Push Up">
             <source src="img/hspu profondi.mp4" type="video/mp4">
           </video>
         </div>
